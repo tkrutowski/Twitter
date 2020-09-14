@@ -1,6 +1,5 @@
 package org.sda.twitter.servlets;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +11,12 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
 
         if (session != null) {
             session.invalidate();
+            resp.sendRedirect("/twitter/index.html");
         }
     }
 }

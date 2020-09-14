@@ -3,25 +3,24 @@ package org.sda.twitter.servlets;
 
 import org.sda.twitter.database.dao.UsersDao;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Random;
 
 @WebServlet(name = "Login", value = "/login")
 public class LoginServlet extends HttpServlet {
 
-    private Random generator;
     private UsersDao usersDao;
 
     public void init() {
-        generator = new Random();
         usersDao = new UsersDao();
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         boolean found = usersDao.hasUser(login, password);
@@ -31,7 +30,8 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", login);
             resp.sendRedirect("/twitter/profile.jsp");
         } else {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.sendRedirect("/twitter/loginFailed.html");
         }
     }
 }
