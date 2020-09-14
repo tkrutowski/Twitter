@@ -27,5 +27,18 @@ public class UsersDao {
         }
         return false;
     }
+    public boolean hasUser(String login, String password) {
+        try (Connection connection = datasourceConfiguration.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE login = ? AND password = ?")) {
+            statement.setString(1, login);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
 
 }
