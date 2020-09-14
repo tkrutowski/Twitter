@@ -5,6 +5,7 @@ import org.sda.twitter.database.configuration.DatasourceConfiguration;
 import org.sda.twitter.model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersDao {
@@ -40,5 +41,19 @@ public class UsersDao {
         return false;
     }
 
+    public List<User> findAll(){
+        List<User> userList=new ArrayList<>();
+        String sql = "select * from users";
+        try(Connection connection=datasourceConfiguration.getConnection();
+        Statement statement=connection.createStatement();){
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                userList.add(new User(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
 
 }
