@@ -45,7 +45,7 @@ public class PublishTweetServlet extends HttpServlet {
             }
 
         } else {
-            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 }
