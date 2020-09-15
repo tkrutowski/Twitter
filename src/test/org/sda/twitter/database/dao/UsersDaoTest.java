@@ -10,29 +10,29 @@ public class UsersDaoTest {
     UsersDao usersDao = new UsersDao();
 
     @Test
-    public void should_return_true_when_valid() {
+    public void should_return_id_when_valid() {
         //when
         String name = "Tomek";
         String pass = "maslo";
 
         //given
-        boolean result = usersDao.hasUser(name, pass);
+        int result = usersDao.hasUser(name, pass);
 
         //then
-        Assert.assertTrue(result);
+        Assert.assertTrue(result==1);
     }
 
     @Test
-    public void should_return_false_when_invalid() {
+    public void should_return_minus1_when_invalid() {
         //when
         String name = "test";
         String pass = "test";
 
         //given
-        boolean result = usersDao.hasUser(name, pass);
+        int result = usersDao.hasUser(name, pass);
 
         //then
-        Assert.assertFalse(result);
+        Assert.assertTrue(result==-1);
     }
 
 

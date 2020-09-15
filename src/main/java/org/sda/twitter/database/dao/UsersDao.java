@@ -28,17 +28,19 @@ public class UsersDao {
         }
         return false;
     }
-    public boolean hasUser(String login, String password) {
+    public int hasUser(String login, String password) {
+        int id=-1;
         try (Connection connection = datasourceConfiguration.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE login = ? AND password = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT id FROM users WHERE login = ? AND password = ?")) {
             statement.setString(1, login);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
-            return resultSet.next();
+            while (resultSet.next())
+                id=resultSet.getInt(1);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return false;
+        return id;
     }
 
     public List<User> findAll(){
