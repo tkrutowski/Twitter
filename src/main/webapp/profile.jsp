@@ -24,6 +24,15 @@
         <input value="Wyloguj" type="submit">
     </form>
 </div>
+<div>
+    <form action="publishTweet" method="post">
+            <textarea id="tweetArea" name="tweetMessage" rows="5" cols="50">
+            Place your message here
+            </textarea>
+        <br/>
+        <input type="submit" value="Publish">
+    </form>
+</div>
 
 </body>
 </html>

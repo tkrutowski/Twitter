@@ -15,13 +15,22 @@
 <body>
 <h1>Użytkownicy</h1>
 <%! UsersDao usersDao=new UsersDao();%>
-<%! List<User> users=usersDao.findAll();%>
-        <ul>
-            <% for (User user : users) {
-                out.println("<li>" + user.getLogin() + "</li>");
+<%--<%! int userId;%>--%>
+<%--<% userId = (Integer) session.getAttribute("userId");%>--%>
+
+<%--<%! List<User> users=usersDao.findAll(userId);%>--%>
+<ul>
+            <%
+                List<User> users=usersDao.findAll((Integer) session.getAttribute("userId"));
+                for (User user : users) {
+                out.println("<li>" + user.getLogin() + "<button type=\"button\">Dodaj do obserwowanych</button><button type=\"button\">Usuń z obserwowanych</button></li>");
             }
+//                out.println(session.getAttribute("userId"));
+//                out.println(session.getAttribute("user"));
             %>
 
 </ul>
+<button type="button">Dodaj do obserwowanych</button>
+<button type="button">Usuń z obserwowanych</button>
 </body>
 </html>
