@@ -37,4 +37,5 @@ public class Tweet {
     public void setAuthorId(int authorId) {
         this.authorId = authorId;
     }
+
 }
