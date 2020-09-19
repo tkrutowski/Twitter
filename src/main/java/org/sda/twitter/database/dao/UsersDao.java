@@ -5,6 +5,7 @@ import org.sda.twitter.database.configuration.DatasourceConfiguration;
 import org.sda.twitter.model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersDao {
@@ -27,17 +28,51 @@ public class UsersDao {
         }
         return false;
     }
-    public boolean hasUser(String login, String password) {
+
+    public int hasUser(String login, String password) {
+        int id = -1;
         try (Connection connection = datasourceConfiguration.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE login = ? AND password = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT id FROM users WHERE login = ? AND password = ?")) {
             statement.setString(1, login);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
-            return resultSet.next();
+            while (resultSet.next())
+                id = resultSet.getInt(1);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return false;
+        return id;
+    }
+
+    public List<User> findAll() {
+        List<User> userList = new ArrayList<>();
+        String sql = "select * from users";
+        try (Connection connection = datasourceConfiguration.getConnection();
+             Statement statement = connection.createStatement();) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                userList.add(new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    public List<User> findAll(int userIdToIgnore) {
+        List<User> userList = new ArrayList<>();
+        String sql = "select * from users";
+        try (Connection connection = datasourceConfiguration.getConnection();
+             Statement statement = connection.createStatement();) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                if (userIdToIgnore != resultSet.getInt(1))
+                    userList.add(new User(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
 
 

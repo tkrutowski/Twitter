@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthenticationFilter", servletNames = {}, urlPatterns = {"/profile.jsp"})
+@WebFilter(filterName = "AuthenticationFilter", servletNames = {}, urlPatterns = {"/profile.jsp", "/users.jsp"})
 public class AuthenticationFilter implements Filter {
 
     @Override

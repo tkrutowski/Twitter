@@ -23,11 +23,13 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        boolean found = usersDao.hasUser(login, password);
 
-        if (found) {
+       int userId = usersDao.hasUser(login, password);
+
+        if (userId > 0) {
             HttpSession session = req.getSession(true);
             session.setAttribute("user", login);
+            session.setAttribute("userId", userId);
             resp.sendRedirect("/twitter/profile.jsp");
         } else {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
