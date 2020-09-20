@@ -42,7 +42,15 @@ body{
   p{
     font-size: 1.4em;
       margin-bottom: 0px;
+      margin-top: 0px;
       color:white;      
+      line-height: 1.4em;
+  }
+
+  .p-error{
+    color:red;      
+    font-size: 1.1em;
+    line-height: 1.1em;
   }
 
   a{
@@ -54,7 +62,6 @@ body{
   }
   a:hover{
       background-color: rgb(63, 205, 253);
-
   }
 
   input{
