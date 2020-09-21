@@ -29,6 +29,7 @@ public class PublishTweetServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);//jeżeli nie ma to nie tworzymy nowej sesji
+        req.setCharacterEncoding("UTF-8");
         if (session != null) {
             int id = (Integer) session.getAttribute("userId");
             String message = req.getParameter("tweetMessage");
@@ -41,7 +42,7 @@ public class PublishTweetServlet extends HttpServlet {
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("/profile.jsp");
                 requestDispatcher.forward(req, resp);
             } else {
-                resp.sendError(HttpServletResponse.SC_CONFLICT);
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
 
         } else {

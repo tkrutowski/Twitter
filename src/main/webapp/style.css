@@ -1,68 +1,70 @@
-body{
+body {
     font-family: 'Baloo Tammudu 2', cursive;
     background-color: black;
 }
 
-#header{
+#header {
     margin: auto;
     background-color: rgb(63, 205, 253);
-  }
-  
-  #logo{
+}
+
+#logo {
     display: block;
     margin: auto;
-  }
+}
 
-  #container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 960px;
     height: auto;
     margin: auto;
-  }
-  .tweet{
-      align-self: center;
-      width: 90%;
+}
+
+.tweet {
+    align-self: center;
+    width: 90%;
     border: 3px solid rgb(63, 205, 253);
     border-radius: 30px;
     margin: 10px 0px;
-  }
-
-.tweet-header{
-display: flex;
-margin: 10px 20px;
-padding-top: 10px;
-justify-content: space-between;
 }
 
-.tweet-message{
+.tweet-header {
+    display: flex;
+    margin: 10px 20px;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+
+.tweet-message {
     padding: 10px;
 }
-#profile-form{
+
+#profile-form {
     display: flex;
     flex-direction: column;
-justify-items: ; /* justify-content: space-around; */
-  /* align-items: stretch; */
-  width: 100%;
-  height: auto;
-  margin: auto;
-  padding: 10px;
-  margin-top: 30px;
-  border: 3px solid rgb(63, 205, 253);
-  border-radius: 30px;
+    justify-items: ; /* justify-content: space-around; */
+    /* align-items: stretch; */
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    margin-top: 30px;
+    border: 3px solid rgb(63, 205, 253);
+    border-radius: 30px;
 }
 
-  #login-form{
-      justify-self: center;
-      width: 50%;
-      margin: auto;
-      padding: 10px;
-      margin-top: 100px;
-  }
+#login-form {
+    justify-self: center;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    margin-top: 100px;
+}
 
-  #user-form{
-      display: flex;
+#user-form {
+    display: flex;
     justify-content: space-around;
     align-items: stretch;
     width: 75%;
@@ -73,7 +75,8 @@ justify-items: ; /* justify-content: space-around; */
     border: 3px solid rgb(63, 205, 253);
     border-radius: 30px;
 }
-.div-user-buttons{
+
+.div-user-buttons {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -81,12 +84,13 @@ justify-items: ; /* justify-content: space-around; */
     width: 50%;
 }
 
-#div-user{
+#div-user {
     display: flex;
     align-items: center;
     width: 50%;
 }
-.user-button{
+
+.user-button {
     display: flex;
     justify-content: center;
     width: 35%;
@@ -95,57 +99,83 @@ justify-items: ; /* justify-content: space-around; */
     color: white;
     border-radius: 30px;
 }
-  .login-button{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      width: 100%;
-      height: 30px;
-      margin-top: 10px;
-      padding-bottom: 10px;
-      color: white;
-      border-radius: 30px;
-  }
 
-  p{
+.login-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    border-radius: 30px;
+}
+
+p {
     font-size: 1.4em;
-      margin-bottom: 0px;
-      margin-top: 0px;
-      color:white;      
-      line-height: 1.4em;
-  }
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: white;
+    line-height: 1.4em;
+}
 
-  h1{
-    color:white;  
-  }
-  .p-error{
-    color:red;      
+h1 {
+    color: white;
+}
+
+.p-error {
+    color: red;
     font-size: 1.1em;
     line-height: 1.1em;
-  }
+}
 
-  a{
+a {
     border: 3px solid rgb(63, 205, 253);
     font-size: 1.4em;
     text-decoration: none;
-  }
-  a:hover{
-      background-color: rgb(63, 205, 253);
-  }
-
-  input{
-      color: white ;
-      background-color: black;
-      width: 100%;
-      height: 50px;
-      font-size: 1.3em;
-      margin-bottom: 15px;
-  }
-
-  label{
-    font-size: 1em;
-      margin-bottom: 0px;
-      color:white;      
-  }
 }
 
+a:hover {
+    background-color: rgb(63, 205, 253);
+}
+
+input {
+    color: white;
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1em;
+    margin-bottom: 0px;
+    color: white;
+}
+
+textarea {
+    resize: none;
+    font-size: 1.5em;
+    /* width: auto; */
+}
+
+#tweet-form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 99%;
+    margin: auto;
+    padding: 10px;
+    margin-top: 100px;
+}
+
+#div-tweet-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 90px;
+    width: 99%;
+}
