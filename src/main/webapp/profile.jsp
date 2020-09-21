@@ -11,26 +11,53 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-    <title>User profile</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&display=swap" rel="stylesheet">
+
+    <title>Twitter - profil użytkownika</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>Welcome <%= session.getAttribute("user")%></h1>
-<div>
-    <form action="users" method="get">
-        <input value="Lista użytkowników" type="submit">
-    </form>
+<div id="header">
+    <!-- <h1>Twitter</h1> -->
+    <img id="logo" src="twitter-company.jpg"/>
 </div>
+<br/>
+<div id="container">
+    <div id="profile-form">
+        <div id="user-form" style="width: 90%; border: none;">
+            <div id="div-user">
+                <p style="font-size: 2.7em;">Witaj <%= session.getAttribute("user")%></p>
+            </div>
 
-<div>
-    <%! UsersDao usersDao = new UsersDao();%>
-    <%! FollowersDao followersDao = new FollowersDao();%>
-    <%! TweetDao tweetDao=new TweetDao();%>
+            <div class="div-user-buttons" style="width: 60%;">
+                <form class="div-user-buttons">
+                    <a class="user-button" style="width: 90%;" href="newTweet.html">Nowy tweet</a>
+                </form>
 
-    <%! int userId; %>
-    <%userId = (Integer) session.getAttribute("userId");%>
-    <ul>
+                <form class="div-user-buttons" action="users" method="get">
+                    <a class="user-button" style="width: 90%;" href="#" onclick="this.parentNode.submit();">Użytkownicy</a>
+                </form>
+
+                <form class="div-user-buttons" action="logout" method="get">
+                    <a class="user-button" style="width: 60%;" href="#" onclick="this.parentNode.submit();">Wyloguj</a>
+                </form>
+
+            </div>
+
+        </div>
+        <p style="font-size: 2em; margin-top: 60px; align-self: center;">Tweety obserwowanych użytkowników</p>
+
+        <%! UsersDao usersDao = new UsersDao();%>
+        <%! FollowersDao followersDao = new FollowersDao();%>
+        <%! TweetDao tweetDao = new TweetDao();%>
+
+        <%! int userId; %>
+        <%userId = (Integer) session.getAttribute("userId");%>
         <%
             //lista obserwowanych przez uzytkownika zalogowanego
             List<Integer> followedList = followersDao.findFollowedByUserId(userId);
@@ -39,34 +66,31 @@
             //lista tweetów obserwowanych użytkowników
             List<Tweet> followedTweet = tweetDao.getFollowedTweet(followedList);
 
-            for(Tweet tweet:followedTweet){
-               out.println("<div>");
-                out.println("<li>");
-                out.println("<p>uzytkownik "+tweet.getAuthorId()+"</p>");
-                out.println("<p>"+tweet.getMessage()+"</p>");
-                out.println("</li>");
+            for (Tweet tweet : followedTweet) {
+                out.println("<div class=\"tweet\">");
+                out.println("<div class=\"tweet-header\">");
+                out.println("<p>" + tweet.getAuthorId() + "</p>");
+                out.println("<p>" + tweet.getPublishDate().toLocalDate() + "  " + tweet.getPublishDate().toLocalTime() + "</p>");
+                out.println("</div>");
+
+                out.println("<div>");
+                out.println("<p class=\"tweet-message\">" + tweet.getMessage() + "</p>");
+                out.println("</div>");
                 out.println("</div>");
             }
-
         %>
 
-    </ul>
+    </div>
 </div>
-
-<div>
-    <form action="logout" method="get">
-        <input value="Wyloguj" type="submit">
-    </form>
-</div>
-<div>
-    <form action="publishTweet" method="post">
-            <textarea id="tweetArea" name="tweetMessage" rows="5" cols="50">
-            Place your message here
-            </textarea>
-        <br/>
-        <input type="submit" value="Publish">
-    </form>
-</div>
+<%--<div>--%>
+<%--    <form action="publishTweet" method="post">--%>
+<%--            <textarea id="tweetArea" name="tweetMessage" rows="5" cols="50">--%>
+<%--            Place your message here--%>
+<%--            </textarea>--%>
+<%--        <br/>--%>
+<%--        <input type="submit" value="Publish">--%>
+<%--    </form>--%>
+<%--</div>--%>
 
 </body>
 </html>

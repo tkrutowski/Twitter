@@ -9,7 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -23,7 +24,9 @@
     <%userId = (Integer) session.getAttribute("userId");%>
 
 <div id="header">
-    <img id="logo" src="twitter-company.jpg" />
+    <a href="profile.jsp">
+        <img id="logo" src="twitter-company.jpg" />
+    </a>
 </div>
 <div id="container">
     <h1 style="margin-bottom: 0px;">Lista użytkowników</h1>
@@ -41,7 +44,7 @@
                 out.println("<img style=\"height: 70px;\"src=\"user.png\"/>");
                 out.println("<p>" + user.getLogin() + "</p>");
                 out.println("</div>");
-                out.println("<div id=\"div-user-buttons\">");
+                out.println("<div class=\"div-user-buttons\">");
                 out.println("<a class=\"user-button\" href=\"#\" onclick=\"this.parentNode.parentNode.submit();\">Anuluj</a>");
                 out.println("<input name=\"followed\" readonly hidden value=" + user.getId() + "></input>");
                 out.println("<input name=\"follower\" readonly hidden value=" + userId + "></input>");
@@ -53,7 +56,7 @@
                 out.println("<img style=\"height: 70px;\"src=\"user.png\"/>");
                 out.println("<p>" + user.getLogin() + "</p>");
                 out.println("</div>");
-                out.println("<div id=\"div-user-buttons\">");
+                out.println("<div class=\"div-user-buttons\">");
                 out.println("<a class=\"user-button\" href=\"#\" onclick=\"this.parentNode.parentNode.submit();\">Obserwuj</a>");
                 out.println("<input name=\"followed\" readonly hidden value=" + user.getId() + "></input>");
                 out.println("<input name=\"follower\" readonly hidden value=" + userId + "></input>");
