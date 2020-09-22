@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
-    <title>Nowy Tweet</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&display=swap" rel="stylesheet">
+    <title>Twitter - Nowy Tweet</title>
 </head>
+
 <body>
-<div>
-    <form action="publishTweet" method="post">
-            <textarea id="tweetArea" name="tweetArea" rows="5" cols="50">
-            Place your message here
-            </textarea>
-        <br/>
-        <input type="submit" value="Publish">
-    </form>
-</div>
+    <div id="header">
+        <img id="logo" src="twitter-company.jpg" />
+    </div>
+    <br />
+    <div id="container">
+
+        <form id="tweet-form" action="publishTweet" method="post">
+            <textarea id="tweetArea" name="tweetMessage" rows="15" cols="65"
+                placeholder="Wpisz treść tweeta tutaj..."></textarea>
+
+            <div id="div-tweet-buttons">
+                <a class="user-button" style="width: 15%;" target="_parent" href="profile.jsp">Anuluj</a>
+
+                <a class="user-button" style="width: 15%; margin-left: 10px;" href="#"
+                    onclick="this.parentNode.parentNode.submit();">Zapisz</a>
+
+            </div>
+        </form>
+
+    </div>
 </body>
 </html>

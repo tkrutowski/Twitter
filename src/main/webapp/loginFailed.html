@@ -2,13 +2,24 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Login failed</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&display=swap" rel="stylesheet">
+    <title>Twitter - logowanie</title>
 </head>
 <body>
-<h2>Logowanie nieudana</h2>
+<div id="header">
+    <img id="logo" src="twitter-company.jpg" />
+</div>
 <br/>
-<a href="login.html">Spróbuj ponownie</a>
-lub
-<a href="register.html">Zarejestruj</a>
+<div id="container">
+
+    <div id="login-form">
+        <p class="p-error">Nie znaleziono użytkownika. Spróbuj ponownie.</p>
+        <a class="login-button" href="register.html" style="margin-top: 0px;">Zarejestruj się</a>
+        
+        <a class="login-button" href="login.html">Zaloguj się</a>
+    </div>
+
+</div>
 </body>
 </html>

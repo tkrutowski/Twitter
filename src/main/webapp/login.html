@@ -2,18 +2,28 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Twitter - login</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&display=swap" rel="stylesheet">
+
+    <title>Twitter - logowanie</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<form action="login" method="POST">
-    <label for="login">Login</label>
-    <input type="text" name="login" id="login"/>
-
-    <br/>
-    <label for="password">Password</label>
-   <input type="password" id="password" name="password"/>
-    <br/>
-    <input type="submit" value="Login"/>
-</form>
+    <div id="header">
+        <img id="logo" src="twitter-company.jpg" />
+    </div>
+    <br />
+    <div id="container">
+        <div id="login-form">
+            <p>Zaloguj się do Twittera</p>
+            <form action="login" method="POST" style="size: 100%;">
+                <input type="text" name="login" id="login" placeholder="wpisz login..." />
+                <br />
+                <input type="password" id="password" name="password" placeholder="wpisz hasło..." />
+                <br />
+                <a class="login-button" href="#" onclick="this.parentNode.submit();"> Zaloguj się</a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
