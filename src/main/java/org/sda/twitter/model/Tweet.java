@@ -2,6 +2,7 @@ package org.sda.twitter.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Tweet {
     private String message;
@@ -38,4 +39,18 @@ public class Tweet {
         this.authorId = authorId;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tweet tweet = (Tweet) o;
+        return authorId == tweet.authorId &&
+                message.equals(tweet.message) &&
+                publishDate.equals(tweet.publishDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(message, authorId, publishDate);
+    }
 }

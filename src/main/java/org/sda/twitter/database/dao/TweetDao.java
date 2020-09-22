@@ -6,6 +6,8 @@ import org.sda.twitter.model.Tweet;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -39,6 +41,7 @@ public class TweetDao {
             tweetList.addAll(getTweets(idUser));
         }
         //posortowanie wg daty
+        Collections.sort(tweetList, Comparator.comparing(Tweet::getPublishDate));
 
         return tweetList;
     }
