@@ -1,9 +1,9 @@
 <%@ page import="org.sda.twitter.database.dao.UsersDao" %>
 <%@ page import="org.sda.twitter.database.dao.FollowersDao" %>
-<%@ page import="org.sda.twitter.model.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.sda.twitter.database.dao.TweetDao" %>
-<%@ page import="org.sda.twitter.model.Tweet" %><%--
+<%@ page import="org.sda.twitter.model.Tweet" %>
+<%@ page import="java.util.Collections" %><%--
   Created by IntelliJ IDEA.
   User: tkrut
   Date: 13.09.2020
@@ -63,12 +63,12 @@
             List<Integer> followedList = followersDao.findFollowedByUserId(userId);
 
             //lista tweetów obserwowanych użytkowników
-            List<Tweet> followedTweet = tweetDao.getFollowedTweet(followedList);
-
-            for (Tweet tweet : followedTweet) {
+            List<Tweet> followedTweets = tweetDao.getFollowedTweet(followedList);
+            Collections.reverse(followedTweets);
+            for (Tweet tweet : followedTweets) {
                 out.println("<div class=\"tweet\">");
                 out.println("<div class=\"tweet-header\">");
-                out.println("<p>" + tweet.getAuthorId() + "</p>");
+                out.println("<p>" + usersDao.getUserName(tweet.getAuthorId()) + "</p>");
                 out.println("<p>" + tweet.getPublishDate().toLocalDate() + "  " + tweet.getPublishDate().toLocalTime() + "</p>");
                 out.println("</div>");
 
