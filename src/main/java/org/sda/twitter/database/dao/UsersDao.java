@@ -43,6 +43,19 @@ public class UsersDao {
         }
         return id;
     }
+    public String getUserName(int id) {
+        String result = "";
+        try (Connection connection = datasourceConfiguration.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT login FROM users WHERE id = ?")) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next())
+                result = resultSet.getString(1);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return result;
+    }
 
     public List<User> findAll() {
         List<User> userList = new ArrayList<>();
@@ -59,7 +72,7 @@ public class UsersDao {
         return userList;
     }
 
-    public List<User> findAll(int userIdToIgnore) {
+    public List<User> findAllExceptLoggedIn(int userIdToIgnore) {
         List<User> userList = new ArrayList<>();
         String sql = "select * from users";
         try (Connection connection = datasourceConfiguration.getConnection();

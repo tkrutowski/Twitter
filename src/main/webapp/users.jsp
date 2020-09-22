@@ -33,7 +33,7 @@
 
     <%
         //lista wszystkich uzytkowników oprócz zalogowanego
-        List<User> users = usersDao.findAll(userId);
+        List<User> users = usersDao.findAllExceptLoggedIn(userId);
         //lista obserwowanych przez uzytkownika zalogowanego
         List<Integer> followedList = followersDao.findFollowedByUserId(userId);
         for (User user : users) {

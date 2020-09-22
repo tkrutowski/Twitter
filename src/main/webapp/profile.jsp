@@ -1,6 +1,5 @@
 <%@ page import="org.sda.twitter.database.dao.UsersDao" %>
 <%@ page import="org.sda.twitter.database.dao.FollowersDao" %>
-<%@ page import="org.sda.twitter.model.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.sda.twitter.database.dao.TweetDao" %>
 <%@ page import="org.sda.twitter.model.Tweet" %><%--
@@ -68,7 +67,7 @@
             for (Tweet tweet : followedTweet) {
                 out.println("<div class=\"tweet\">");
                 out.println("<div class=\"tweet-header\">");
-                out.println("<p>" + tweet.getAuthorId() + "</p>");
+                out.println("<p>" + usersDao.getUserName(tweet.getAuthorId()) + "</p>");
                 out.println("<p>" + tweet.getPublishDate().toLocalDate() + "  " + tweet.getPublishDate().toLocalTime() + "</p>");
                 out.println("</div>");
 

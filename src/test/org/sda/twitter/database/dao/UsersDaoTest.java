@@ -45,4 +45,14 @@ public class UsersDaoTest {
         //then
         Assert.assertTrue(result>0);
     }
+
+
+    @Test
+    public void should_return_name_when_id_given() {
+
+        //when
+        String userName = usersDao.getUserName(4);
+        //then
+        Assert.assertEquals("Kuba", userName);
+    }
 }
