@@ -39,12 +39,10 @@ public class PublishTweetServlet extends HttpServlet {
 
             if (success) {
                 resp.setStatus(HttpServletResponse.SC_CREATED);
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("/profile.jsp");
-                requestDispatcher.forward(req, resp);
+                req.getRequestDispatcher("/profile.jsp").forward(req, resp);
             } else {
                 resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
-
         } else {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }

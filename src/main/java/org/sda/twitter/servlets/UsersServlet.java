@@ -14,12 +14,12 @@ import java.io.IOException;
 public class UsersServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession session = req.getSession(false);
         if (session != null) {
-            resp.sendRedirect("/twitter/users.jsp");
+            req.getRequestDispatcher("/users.jsp").forward(req,resp);
         }else {
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 

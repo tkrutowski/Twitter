@@ -24,7 +24,7 @@ public class FollowerAddServlet extends HttpServlet {
         int followerId = Integer.valueOf(req.getParameter("follower"));
 
         if(followersDao.add(followerId,followedId)){
-            resp.sendRedirect("/twitter/users.jsp");
+            req.getRequestDispatcher("/users.jsp").forward(req,resp);
         }
     }
 }

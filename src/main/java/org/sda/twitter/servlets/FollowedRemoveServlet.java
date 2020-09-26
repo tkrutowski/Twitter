@@ -26,7 +26,7 @@ public class FollowedRemoveServlet extends HttpServlet {
         int followerId = Integer.valueOf(req.getParameter("follower"));
 
         if(followersDao.remove(followerId,followedId)){
-            resp.sendRedirect("/twitter/users.jsp");
+            req.getRequestDispatcher("/users.jsp").forward(req,resp);
         }
     }
 }

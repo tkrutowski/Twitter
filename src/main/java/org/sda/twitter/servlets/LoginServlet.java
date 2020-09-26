@@ -3,6 +3,7 @@ package org.sda.twitter.servlets;
 
 import org.sda.twitter.database.dao.UsersDao;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
@@ -33,7 +34,7 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("/twitter/profile.jsp");
         } else {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            resp.sendRedirect("/twitter/loginFailed.html");
+            req.getRequestDispatcher("/loginFailed.html").forward(req,resp);
         }
     }
 }
